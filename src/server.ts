@@ -6,7 +6,7 @@
  */
 
 import { createServer, IncomingMessage, ServerResponse } from 'http';
-import { getItemHandler, createItemHandler } from './handlers/example.js';
+import { getItemHandler, createItemHandler, updateItemHandler } from './handlers/index.js';
 
 const PORT = process.env.PORT || 3000;
 
@@ -41,6 +41,9 @@ async function handleRequest(req: IncomingMessage, res: ServerResponse) {
       result = await getItemHandler('test');
     } else if (method === 'POST' && url === '/api/items') {
       result = await createItemHandler(parsedBody);
+    } else if (method === 'PUT' && url?.startsWith('/api/items/')) {
+      const id = url.split('/').pop();
+      result = await updateItemHandler(id!, parsedBody);
     } else if (method === 'GET' && url?.startsWith('/api/items/')) {
       const id = url.split('/').pop();
       result = await getItemHandler(id!);
@@ -67,5 +70,6 @@ server.listen(PORT, () => {
   console.log(`\nExample endpoints:`);
   console.log(`  POST   http://localhost:${PORT}/api/items`);
   console.log(`  GET    http://localhost:${PORT}/api/items/:id`);
+  console.log(`  PUT    http://localhost:${PORT}/api/items/:id`);
   console.log(`\nPress Ctrl+C to stop\n`);
 });
