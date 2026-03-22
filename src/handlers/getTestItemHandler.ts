@@ -1,4 +1,4 @@
-import { CreateItemRequest, CreateItemRequestSchema, ExamItem, ExamItemSchema, UpdateItemRequest, UpdateItemRequestSchema, ListItemsQuery } from '../types/item';
+import { ExamItem, } from '../types/item';
 import { storage } from './index.js';
 
 export async function getItemHandler(id: string) : Promise<{ statusCode: number; body: ExamItem | { error: string } }> {

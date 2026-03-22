@@ -1,8 +1,5 @@
 # Architecture Documentation
 
-Document your design decisions and implementation approach here.
-I don't have a background in AWS infrastructure. I'm basing my decisions on my general architecure experience and research performed as part of this code sample. :shrug:
-
 ## **Data Model Design:**
 DynamoDB table schema, key design, GSI strategy
 
@@ -75,6 +72,7 @@ Authentication, authorization, encryption, IAM policies
 ## **Trade-offs:**
 What you prioritized and what you'd add with more time
 
+- Local environment setup for dev and test
 - Prioritized RESTful design and API logic 
 - Framework for infrastructure and AWS cdk
 - Architecure and database planning
@@ -87,4 +85,4 @@ Would Improves:
   - Testing - test unhappy paths, bad inputs ect.
   - Add more API endpoints and associated infrastructure
   - Improve local development expeience (ex. `server.ts` routing)
-  
+  - Revisit best practices of where to keep Zod schemas
